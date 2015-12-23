@@ -7,6 +7,7 @@ A Java solution and Runner to the logic card game "Set"
 '''
   mvn clean install
 '''
+
 # How to Run
 1. On the command line
 '''
@@ -17,5 +18,5 @@ A Java solution and Runner to the logic card game "Set"
   Action: (N)ew Card | (C)lear board | (S)how Board | (F)ind Sets: 
 '''
 
-#Kaizen
+# Kaizen
 Please feel free to pull and improve the UI instructions or underlying combinatorics!
