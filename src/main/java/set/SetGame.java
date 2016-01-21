@@ -24,43 +24,31 @@ public class SetGame {
 		boolean countCheck = false;
 		// find falsehoods in sets
 		// color
-		if (c1.getColor().equals(c2.getColor()) || c2.getColor().equals(c3.getColor())
-				|| c1.getColor().equals(c3.getColor())) {
-			// check if all colors are the same
-			if (c1.getColor().equals(c2.getColor()) && c2.getColor().equals(c3.getColor())) {
+		if (intersects(c1.getColor(), c2.getColor(), c3.getColor())) {
+			if (allEquals(c1.getColor(), c2.getColor(), c3.getColor())) 
 				colorCheck = true;
-			}
 		} else {
 			colorCheck = true;
 		}
 		// symbol
-		if (c1.getSymbol().equals(c2.getSymbol()) || c2.getSymbol().equals(c3.getSymbol())
-				|| c1.getSymbol().equals(c3.getSymbol())) {
-			// check if all symbols are the same
-			if (c1.getSymbol().equals(c2.getSymbol()) && c2.getSymbol().equals(c3.getSymbol())) {
+		if (intersects(c1.getSymbol(), c2.getSymbol(), c3.getSymbol())) {
+			if (allEquals(c1.getSymbol(), c2.getSymbol(), c3.getSymbol())) 
 				symbolCheck = true;
-			}
 		} else {
 			symbolCheck = true;
 		}
 		// shading
-		if (c1.getShading().equals(c2.getShading()) || c2.getShading().equals(c3.getShading())
-				|| c1.getShading().equals(c3.getShading())) {
-			// check if all shadings are the same
-			if (c1.getShading().equals(c2.getShading()) && c2.getShading().equals(c3.getShading())) {
+		if (intersects(c1.getShading(), c2.getShading(), c3.getShading())) {
+			if (allEquals(c1.getShading(), c2.getShading(), c3.getShading())) 
 				shadingCheck = true;
-			}
 		} else {
 			shadingCheck = true;
 		}
 		
 		// count
-		if (c1.getCount() == c2.getCount() || c2.getCount() == c3.getCount()
-				|| c1.getCount() == c3.getCount()) {
-			// check if all counts are the same
-			if (c1.getCount() == c2.getCount() && c2.getCount() == c3.getCount()) {
+		if (intersects(c1.getCount(), c2.getCount(), c3.getCount())) {
+			if (allEquals(c1.getCount(), c2.getCount(), c3.getCount())) 
 				countCheck = true;
-			}
 		} else {
 			countCheck = true;
 		}
@@ -78,6 +66,30 @@ public class SetGame {
 			}
 		}
 		return combos;
+	}
+
+	public boolean intersects(Object... objects) {
+		int i, j;
+
+		for (i = 0; i < objects.length - 1; i++){
+			for (j = i + 1; j < objects.length; j++) {
+				if (objects[i].equals(objects[j])) 
+					return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean allEquals(Object... objects) {
+		int i, j;
+
+		for (i = 0; i < objects.length - 1; i++){
+			for (j = i + 1; j < objects.length; j++) {
+				if (!objects[i].equals(objects[j])) 
+					return false;
+			}
+		}
+		return true;
 	}
 
 }
