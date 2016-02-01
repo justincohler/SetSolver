@@ -1,5 +1,5 @@
 # SetSolver
-A Java solution and Runner to the logic card game "Set"
+A Java solution and Runner to the logic card game Set
 
 # How to Build
 1. Enter the project directory on the command line.
