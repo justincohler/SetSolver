@@ -1,8 +1,6 @@
 package set;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class SetGame {
 
@@ -25,29 +23,29 @@ public class SetGame {
 		// find falsehoods in sets
 		// color
 		if (intersects(c1.getColor(), c2.getColor(), c3.getColor())) {
-			if (allEquals(c1.getColor(), c2.getColor(), c3.getColor())) 
+			if (allEquals(c1.getColor(), c2.getColor(), c3.getColor()))
 				colorCheck = true;
 		} else {
 			colorCheck = true;
 		}
 		// symbol
 		if (intersects(c1.getSymbol(), c2.getSymbol(), c3.getSymbol())) {
-			if (allEquals(c1.getSymbol(), c2.getSymbol(), c3.getSymbol())) 
+			if (allEquals(c1.getSymbol(), c2.getSymbol(), c3.getSymbol()))
 				symbolCheck = true;
 		} else {
 			symbolCheck = true;
 		}
 		// shading
 		if (intersects(c1.getShading(), c2.getShading(), c3.getShading())) {
-			if (allEquals(c1.getShading(), c2.getShading(), c3.getShading())) 
+			if (allEquals(c1.getShading(), c2.getShading(), c3.getShading()))
 				shadingCheck = true;
 		} else {
 			shadingCheck = true;
 		}
-		
+
 		// count
 		if (intersects(c1.getCount(), c2.getCount(), c3.getCount())) {
-			if (allEquals(c1.getCount(), c2.getCount(), c3.getCount())) 
+			if (allEquals(c1.getCount(), c2.getCount(), c3.getCount()))
 				countCheck = true;
 		} else {
 			countCheck = true;
@@ -90,6 +88,16 @@ public class SetGame {
 			}
 		}
 		return true;
+	}
+
+	public List<Card> constructSet() {
+		List<Card> set = new ArrayList<Card>();
+		for (Color color : Color.values())
+			for (Shading shading : Shading.values())
+				for (Symbol symbol : Symbol.values())
+					for (int count = 1; count <= 3; count++)
+						set.add(new Card(color,symbol,shading,count));
+		return set;
 	}
 
 }

@@ -4,13 +4,14 @@ import static org.junit.Assert.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Test;
 
 public class SetTest {
 	
 	@Test
-	public void noSet() {
+	public void noSetTest() {
 		SetGame game = new SetGame();
 		Card c1 = new Card(Color.GREEN, Symbol.DIAMOND, Shading.OPEN, 1);
 		Card c2 = new Card(Color.GREEN, Symbol.SQUIGGLE, Shading.OPEN, 1);
@@ -20,7 +21,7 @@ public class SetTest {
 	}
 	
 	@Test
-	public void oneSet() {
+	public void oneSetTest() {
 		SetGame game = new SetGame();
 		Card c1 = new Card(Color.GREEN, Symbol.DIAMOND, Shading.OPEN, 1);
 		Card c2 = new Card(Color.GREEN, Symbol.SQUIGGLE, Shading.OPEN, 1);
@@ -30,7 +31,7 @@ public class SetTest {
 	}
 	
 	@Test
-	public void oneSetAllDifferent() {
+	public void oneSetAllDifferentTest() {
 		SetGame game = new SetGame();
 		Card c1 = new Card(Color.GREEN, Symbol.DIAMOND, Shading.OPEN, 1);
 		Card c2 = new Card(Color.PURPLE, Symbol.OVAL, Shading.SOLID, 2);
@@ -40,7 +41,7 @@ public class SetTest {
 	}
 	
 	@Test
-	public void twoSets() {
+	public void twoSetsTest() {
 		SetGame game = new SetGame();
 		Card c1 = new Card(Color.GREEN, Symbol.DIAMOND, Shading.OPEN, 1);
 		Card c2 = new Card(Color.GREEN, Symbol.SQUIGGLE, Shading.OPEN, 1);
@@ -51,6 +52,17 @@ public class SetTest {
 		List<List<Card>> sets = game.findSets(Arrays.asList(c1, c2, c3, c4, c5));
 		assertEquals(2, sets.size());	
 	}
-	
 
+	@Test
+	public void randomSetTest() {
+		Card c1 = new Card(true);
+		System.out.println(c1);
+	}
+
+	@Test
+	public void constructSetTest() {
+		SetGame game = new SetGame();
+		List<Card> set = game.constructSet();
+		assertEquals(81, set.size());
+	}
 }

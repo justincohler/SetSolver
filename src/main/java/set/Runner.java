@@ -1,10 +1,10 @@
 package set;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Runner {
+
+	public static final int BOARD_SIZE = 12;
 
 	public static void main(String[] args) {
 
@@ -13,7 +13,7 @@ public class Runner {
 
 		List<Card> cards = new ArrayList<Card>();
 		while (true) {
-			System.out.println("\nAction: (N)ew Card | (C)lear board | (S)how Board | (F)ind Sets: ");
+			System.out.println("\nAction: (N)ew Card | (F)ind Sets | (C)lear board | (S)how Board | (R)andom Board: ");
 			String action = in.next();
 
 			if (action.equalsIgnoreCase("N")) {
@@ -86,6 +86,15 @@ public class Runner {
 				cards.add(c);
 			} else if (action.equalsIgnoreCase("C")) {
 				cards.clear();
+			} else if (action.equalsIgnoreCase("R")) {
+				cards.clear();
+				List<Card> deck = game.constructSet();
+				for (int i = 0; i < BOARD_SIZE; i++) {
+					Random r = new Random();
+					Card c = deck.get(r.nextInt(deck.size()));
+					deck.remove(c);
+					cards.add(c);
+				}
 			} else if (action.equalsIgnoreCase("S")) {
 				if (cards == null || cards.isEmpty()) {
 					System.out.println("No cards on the board yet..");
